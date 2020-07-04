@@ -2,6 +2,7 @@ const cors = require('cors');
 const path = require('path'); // built in
 const express = require('express');
 const morgan = require('morgan');
+const compression = require('compression');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -83,6 +84,8 @@ app.use((req, res, next) => {
   // console.log(req.cookies);
   next(); // don't forget to use next in your middleware or it gets stuck
 });
+
+app.use(compression());
 
 // ************************************ ROUTES ************************************
 app.use('/', viewRouter);

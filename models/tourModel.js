@@ -140,11 +140,11 @@ tourSchema.virtual('reviews', {
 });
 
 // DOCUMENT MIDDLEWARE: runs before .save() and .create() - this points to current DOCUMENT
-tourSchema.pre('save', function (next) {
-  // console.log('Hello from the document middleware');
-  console.log((this.slug = slugify(this.name, { lower: true })));
-  next();
-});
+// tourSchema.pre('save', function (next) {
+//   // console.log('Hello from the document middleware');
+//   // console.log((this.slug = slugify(this.name, { lower: true })));
+//   next();
+// });
 
 // // Embedding users into tours (guides would be an array in model)
 // tourSchema.pre('save', async function(next) {

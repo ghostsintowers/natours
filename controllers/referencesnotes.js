@@ -284,9 +284,7 @@ exports.updateTour = async (req, res) => {
 // ************************************ DELETE TOUR ************************************
 exports.deleteTour = async (req, res) => {
   try {
-    const delTour = await Tour.findByIdAndDelete(req.params.id, () => {
-      console.log('hello from the delete');
-    });
+    const delTour = await Tour.findByIdAndDelete(req.params.id);
 
     res.status(204).json({
       status: 'success',
