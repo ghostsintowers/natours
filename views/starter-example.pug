@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        title Natours.io | #{tour}
+        link(rel='stylesheet' href='css/style.css')
+        link(rel='shortcut icon' type='image/png' href='img/favicon.png' )
+    body
+        h1= tour
+        h2= user.toUpperCase()
+        // This is a comment that will show up in the html
+        //- this comment will not show up in the html
+
+        //- this is unbuffered code, it will add nothing to the output
+        - const x = 9;
+
+        //- this is buffered code as it contains output
+        h2= 2*x
+        p this is just some text
