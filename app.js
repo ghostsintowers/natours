@@ -9,11 +9,9 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 
-
 // const bodyParser = require('body-parser');
 // const compression = require('compression');
 // const cors = require('cors');
-
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -28,12 +26,11 @@ const viewRouter = require('./routes/viewRoutes');
 const app = express();
 
 // Setting up PUG engine
-app.set('view engine', 'pug'); 
-app.set('views', path.join(__dirname, 'views')); 
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
 
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 // ************************************ MIDDLEWARE ************************************
 app.use(cors());
@@ -42,10 +39,9 @@ app.use(cors());
 app.use(helmet());
 
 // Middleware - function that can modify incoming data
-if (process.env.NODE_ENV == 'development') {
+if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-
 
 // Limit number of attempts from IP
 const limiter = rateLimit({
@@ -80,8 +76,6 @@ app.use(
   })
 );
 
-
-
 // MIDDLEWARE DEMO
 app.use((req, res, next) => {
   // console.log(req.headers);
@@ -89,7 +83,6 @@ app.use((req, res, next) => {
   // console.log(req.cookies);
   next(); // don't forget to use next in your middleware or it gets stuck
 });
-
 
 // ************************************ ROUTES ************************************
 app.use('/', viewRouter);
